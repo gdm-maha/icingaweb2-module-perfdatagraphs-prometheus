@@ -1,0 +1,5 @@
+Name: PerfdataGraphs Prometheus Backend
+Version: 0.1.0
+Requires:
+  Modules: perfdatagraphs
+Description: Prometheus Backend for Icinga Web Performance Data Graphs

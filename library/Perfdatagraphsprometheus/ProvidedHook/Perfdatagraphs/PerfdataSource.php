@@ -69,7 +69,7 @@ class PerfdataSource extends PerfdataSourceHook
             $perfdataresponse->addError($e->getMessage());
         }
 
-        Benchmark::measure('Transformed performance data from Proemtheus');
+        Benchmark::measure('Transformed performance data from Prometheus');
 
         return $perfdataresponse;
     }

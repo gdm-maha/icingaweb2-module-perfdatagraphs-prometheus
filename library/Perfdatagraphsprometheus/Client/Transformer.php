@@ -52,7 +52,7 @@ class Transformer
 
             // If the __name__ is state_check_perfdata then we have 'values'
             // We create a new PerfdataSeries for 'value' and add values
-            if ($metricname == 'state_check_perfdata') {
+            if ($metricname === 'state_check_perfdata') {
                 // Do we have a dataset already?
                 $dataset = $pfr->getDataset($metriclabel);
 

@@ -26,6 +26,35 @@
 
 `max_data_points` is used for downsampling data. It uses the `step` parameter of the `/api/v1/query_range` endpoint.
 
+## Prometheus
+
+Prometheus needs to promote the Icinga2 resource attributes. Also, out-of-order ingestion is recommended.
+
+```yaml
+storage:
+  tsdb:
+    out_of_order_time_window: 30m
+otlp:
+  promote_resource_attributes:
+    - service.namespace
+    - service.instance.id
+    - service.name
+    - icinga2.service.name
+    - icinga2.command.name
+    - icinga2.host.name
+```
+
+Example Icinga2 configuration:
+
+```
+object OTLPMetricsWriter "prometheus" {
+  host = "prometheus"
+  port = 9090
+  metrics_endpoint = "/api/v1/otlp/v1/metrics"
+  enable_send_thresholds = true
+}
+```
+
 ## Prometheus-compatible databases
 
 The module works with Prometheus-compatible databases.

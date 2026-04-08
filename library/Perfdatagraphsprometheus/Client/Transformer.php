@@ -7,6 +7,7 @@ use Icinga\Module\Perfdatagraphs\Model\PerfdataSet;
 use Icinga\Module\Perfdatagraphs\Model\PerfdataSeries;
 
 use Icinga\Application\Logger;
+use Icinga\Util\Json;
 
 use GuzzleHttp\Psr7\Response;
 
@@ -33,7 +34,7 @@ class Transformer
             return $pfr;
         }
 
-        $body = json_decode($response->getBody()->getContents(), true);
+        $body = Json::decode($response->getBody()->getContents(), true);
 
         if ($body['status'] !== 'success') {
             $pfr->addError($body['error'] ?? 'unknown error');

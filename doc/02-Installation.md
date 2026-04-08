@@ -77,7 +77,7 @@ object OTLPMetricsWriter "victoriametrics" {
 
 **Grafana Mimir**
 
-This use Grafana Mimir make sure the Icinga2 resource attributes are promoted to labels:
+With Grafana Mimir make sure the Icinga2 resource attributes are promoted to labels:
 
 ```yaml
 limits:

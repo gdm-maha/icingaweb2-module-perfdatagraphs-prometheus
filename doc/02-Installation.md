@@ -35,6 +35,17 @@ The module works with Prometheus-compatible databases.
 To use VictoriaMetrics enable the `-usePromCompatibleNaming` flag.
 This replaces characters unsupported by Prometheus with underscores in the ingested metric names and label names (e.g. foo.bar{a.b='c'} is transformed into foo_bar{a_b='c'}).
 
+Example Icinga2 configuration:
+
+```
+object OTLPMetricsWriter "victoriametrics" {
+  host = "victoriametrics"
+  port = 8428
+  metrics_endpoint = "/opentelemetry/v1/metrics"
+  enable_send_thresholds = true
+}
+```
+
 **Grafana Mimir**
 
 This use Grafana Mimir make sure the Icinga2 resource attributes are promoted to labels:
@@ -43,4 +54,15 @@ This use Grafana Mimir make sure the Icinga2 resource attributes are promoted to
 limits:
   otel_keep_identifying_resource_attributes: true
   promote_otel_resource_attributes: "icinga2.command.name,icinga2.service.name,icinga2.host.name"
+```
+
+Example Icinga2 configuration:
+
+```
+object OTLPMetricsWriter "mimir" {
+  host = "mimir"
+  port = 8080
+  metrics_endpoint = "/otlp/v1/metrics"
+  enable_send_thresholds = true
+}
 ```

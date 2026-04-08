@@ -22,14 +22,10 @@ class Transformer
      * output format we need.
      *
      * @param GuzzleHttp\Psr7\Response $response the data to transform
-     * @param array $includeMetrics metrics to include in the response
-     * @param array $excludeMetrics metrics to exlude from the response
      * @return PerfdataResponse
      */
-    public static function transform(
-        Response $response,
-        array $excludeMetrics = [],
-    ): PerfdataResponse {
+    public static function transform(Response $response): PerfdataResponse
+    {
         $pfr = new PerfdataResponse();
 
         if (empty($response)) {
@@ -40,7 +36,7 @@ class Transformer
         $body = json_decode($response->getBody()->getContents(), true);
 
         if ($body['status'] !== 'success') {
-            $perfdataresponse->addError($body['error'] ?? 'unknown error');
+            $pfr->addError($body['error'] ?? 'unknown error');
             return $pfr;
         }
 

@@ -1,5 +1,3 @@
-**Note:** This is an early release that is still in development and prone to change
-
 # Icinga Web Performance Data Graphs Prometheus Backend
 
 A Prometheus backend for the Icinga Web Performance Data Graphs Module.
@@ -17,3 +15,4 @@ Other Icinga and Prometheus integrations we provide:
 
 * PHP version ≥ 8.0
 * Icinga2 OTLPMetricsWriter
+* A Prometheus compatible API to fetch the data from (Prometheus, Mimir, VictoriaMetrics, etc.)

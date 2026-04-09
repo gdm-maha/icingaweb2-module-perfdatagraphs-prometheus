@@ -121,6 +121,7 @@ class Prometheus
     {
         $totalSeconds = $end - $start;
         $stepSeconds = $totalSeconds / $maxDataPoints;
+        // NOTE: This means we can never get a resolution below 60s, even if Icinga2 would send data every 15s
         $stepSeconds = max($stepSeconds, 60);
 
         return (int)round($stepSeconds) . 's';

@@ -80,6 +80,17 @@ class PerfdataGraphsPrometheusConfigForm extends ConfigForm
             'description' => t('Skip the TLS verification'),
             'label' => t('Skip the TLS verification')
         ]);
+
+        $this->addElement('number', 'prometheus_api_max_data_points', [
+            'label' => t('The maximum numbers of datapoints each series returns'),
+            'description' => t(' '),
+            'description'   => t(
+                'The maximum numbers of datapoints each series returns.'
+                    . ' The module will use the step parameter to downsample to this number.'
+            ),
+            'required' => false,
+            'placeholder' => 10000,
+        ]);
     }
 
     public function addSubmitButton()
